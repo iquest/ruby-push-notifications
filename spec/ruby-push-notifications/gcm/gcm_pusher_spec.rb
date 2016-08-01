@@ -10,11 +10,11 @@ module RubyPushNotifications
 
         let(:notif1) { build :gcm_notification }
         let(:notif2) { build :gcm_notification }
-        let(:response) { JSON.dump a: 1 }
+        let(:response) { JSON.dump :a => 1 }
 
         before do
           stub_request(:post, 'https://android.googleapis.com/gcm/send').
-            to_return status: [200, 'OK'], body: response
+            to_return :status => [200, 'OK'], :body => response
         end
 
         it 'submits every notification' do
@@ -22,12 +22,12 @@ module RubyPushNotifications
 
           expect(WebMock).
             to have_requested(:post, 'https://android.googleapis.com/gcm/send').
-              with(body: notif1.as_gcm_json, headers: { 'Content-Type' => 'application/json', 'Authorization' => "key=#{gcm_key}" }).
+              with(:body => notif1.as_gcm_json, :headers => { 'Content-Type' => 'application/json', 'Authorization' => "key=#{gcm_key}" }).
                 once
 
           expect(WebMock).
             to have_requested(:post, 'https://android.googleapis.com/gcm/send').
-              with(body: notif2.as_gcm_json, headers: { 'Content-Type' => 'application/json', 'Authorization' => "key=#{gcm_key}" }).
+              with(:body => notif2.as_gcm_json, :headers => { 'Content-Type' => 'application/json', 'Authorization' => "key=#{gcm_key}" }).
                 once
         end
 

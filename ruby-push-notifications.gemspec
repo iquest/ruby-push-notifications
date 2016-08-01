@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/calonso/ruby-push-notifications'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '>= 1.9.3'
+  spec.required_ruby_version = '>= 1.8.6'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -23,8 +23,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'builder', '~> 3.0'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
-  spec.add_development_dependency 'rake', '~> 10.4'
-  spec.add_development_dependency 'rspec', '~> 3.2'
-  spec.add_development_dependency 'factory_girl', '~> 4.0'
-  spec.add_development_dependency 'webmock', '~> 1.20'
+  spec.add_development_dependency 'rake', '~> 0.9'
+  spec.add_development_dependency 'rspec', '~> 2.9'
+  # spec.add_development_dependency 'factory_girl', '~>2.6'
+  # spec.add_development_dependency 'webmock', '1.9.3'
 end

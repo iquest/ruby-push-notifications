@@ -21,13 +21,13 @@ module RubyPushNotifications
       XML_CONTENT_TYPE     = 'text/xml'
 
       # @private Enumators for notification types
-      BASEBATCH = { tile: 1, toast: 2, raw: 3 }
+      BASEBATCH = { :tile => 1, :toast => 2, :raw => 3 }
 
       # @private Enumators for delay
-      BATCHADDS = { delay450: 10, delay900: 20 }
+      BATCHADDS = { :delay450 => 10, :delay900 => 20 }
 
       # @private Windows Phone Target Types
-      WP_TARGETS = { toast: 'toast', tile: 'token' }
+      WP_TARGETS = { :toast => 'toast', :tile => 'token' }
 
       # Issues a POST request to the MPNS send endpoint to
       # submit the given notifications.
@@ -48,7 +48,7 @@ module RubyPushNotifications
             http.ca_file = cert
           end
           response = http.post url.path, body, headers
-          responses << { device_url: url.to_s, headers: extract_headers(response), code: response.code.to_i }
+          responses << { :device_url => url.to_s, :headers => extract_headers(response), :code => response.code.to_i }
         end
         MPNSResponse.new responses
       end

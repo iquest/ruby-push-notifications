@@ -63,7 +63,7 @@ module RubyPushNotifications
       #
       # @param body [String]. The response body
       def parse_response(body)
-        json = JSON.parse body, symbolize_names: true
+        json = JSON.parse body, :symbolize_names => true
         @success = json[:success]
         @failed = json[:failure]
         @canonical_ids = json[:canonical_ids]

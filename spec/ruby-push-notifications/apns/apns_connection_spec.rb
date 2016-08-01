@@ -76,7 +76,7 @@ module RubyPushNotifications
         let(:connection) { APNSConnection.new tcp_socket, ssl_socket }
 
         it 'can be selected' do
-          allow(ssl_socket).to receive(:to_io).and_return IO.new(IO.sysopen('/dev/null'))
+          allow(ssl_socket).to receive(:to_io).and_return IO.new(2, IO.sysopen('/dev/null'))
           IO.select [connection]
         end
       end

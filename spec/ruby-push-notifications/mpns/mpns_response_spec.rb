@@ -17,14 +17,14 @@ module RubyPushNotifications
 
         let(:responses) {
           [
-            { device_url: '1', headers: headers, code: 200 },
-            { device_url: '2', headers: headers, code: 200 },
-            { device_url: '3', code: 400 },
-            { device_url: '4', code: 401 },
-            { device_url: '5', headers: headers, code: 404 },
-            { device_url: '6', headers: headers, code: 406 },
-            { device_url: '7', headers: headers, code: 412 },
-            { device_url: '8', code: 503 }
+            { :device_url => '1', :headers => headers, :code => 200 },
+            { :device_url => '2', :headers => headers, :code => 200 },
+            { :device_url => '3', :code => 400 },
+            { :device_url => '4', :code => 401 },
+            { :device_url => '5', :headers => headers, :code => 404 },
+            { :device_url => '6', :headers => headers, :code => 406 },
+            { :device_url => '7', :headers => headers, :code => 412 },
+            { :device_url => '8', :code => 503 }
           ]
         }
 

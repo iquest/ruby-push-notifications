@@ -9,18 +9,18 @@ module RubyPushNotifications
         let(:failed_messages) { 1 }
         let(:canonical_ids) { 2 }
         let(:body) { JSON.dump(
-          multicast_id: 123456789,
-          success: successful_messages,
-          failure: failed_messages,
-          canonical_ids: canonical_ids,
-          results: [
-            { message_id: 1,
-              registration_id: 'new_reg_id' },
-            { message_id: 2,
-              registration_id: 'new_reg_id_2' },
-            { message_id: 3 },
-            { message_id: 4,
-              error: 'NotRegistered' }
+          :multicast_id => 123456789,
+          :success => successful_messages,
+          :failure => failed_messages,
+          :canonical_ids => canonical_ids,
+          :results => [
+            { :message_id => 1,
+              :registration_id => 'new_reg_id' },
+            { :message_id => 2,
+              :registration_id => 'new_reg_id_2' },
+            { :message_id => 3 },
+            { :message_id => 4,
+              :error => 'NotRegistered' }
           ]
         ) }
 

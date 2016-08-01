@@ -4,7 +4,7 @@ module RubyPushNotifications
     describe APNSNotification do
 
       let(:device_tokens) { ['12', '34'] }
-      let(:data) { { a: 1 } }
+      let(:data) { { :a => 1 } }
       let(:notification) { APNSNotification.new device_tokens, data }
       let(:notif_id) { 1 }
 

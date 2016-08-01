@@ -22,8 +22,8 @@ module RubyPushNotifications
       #    (https://developer.android.com/google/gcm/server-ref.html#send-downstream)
       def as_gcm_json
         JSON.dump(
-          registration_ids: @registration_ids,
-          data: @data
+          :registration_ids => @registration_ids,
+          :data => @data
         )
       end
     end

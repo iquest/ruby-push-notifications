@@ -66,10 +66,15 @@ module RubyPushNotifications
       #
       # @return [String]. Binary representation of the notification's payload.
       def payload
-        @encoded_payload ||= -> {
-            json = (@data.respond_to?(:to_json) ? @data.to_json : JSON.dump(@data)).force_encoding 'ascii-8bit'
+        @encoded_payload ||= lambda {
+            json = (@data.respond_to?(:to_json) ? @data.to_json : JSON.dump(@data))#.force_encoding 'ascii-8bit'
             [2, json.bytesize, json].pack 'cna*'
           }.call
+      end
+
+      def self.resume_json
+        json = (@data.respond_to?(:to_json) ? @data.to_json : JSON.dump(@data))#.force_encoding 'ascii-8bit'
+        return [2, json.bytesize, json].pack 'cna*'
       end
 
       # @param [Integer]. The unique ID for this notification.

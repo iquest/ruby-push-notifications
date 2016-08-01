@@ -6,7 +6,7 @@ module RubyPushNotifications
       let(:certificate) { 'abc' }
       let(:pusher) { APNSPusher.new certificate, sandbox }
       let(:connection) { instance_double(APNSConnection).as_null_object }
-      let(:data) { { a: 1 } }
+      let(:data) { { :a => 1 } }
 
       before do
         allow(APNSConnection).to receive(:open).with(certificate, sandbox, nil).and_return connection
@@ -19,7 +19,7 @@ module RubyPushNotifications
           context 'containing a single destination' do
 
             let(:token) { generate :apns_token }
-            let(:notification) { build :apns_notification, data: data, tokens: [token] }
+            let(:notification) { build :apns_notification, :data => data, :tokens => [token] }
 
             describe 'success' do
 
@@ -64,7 +64,7 @@ module RubyPushNotifications
 
           context 'containing several destinations' do
             let(:tokens) { [generate(:apns_token), generate(:apns_token)] }
-            let(:notification) { build :apns_notification, data: data, tokens: tokens }
+            let(:notification) { build :apns_notification, :data => data, :tokens => tokens }
 
             describe 'success' do
 
@@ -160,7 +160,7 @@ module RubyPushNotifications
 
         context 'several notifications' do
           let(:tokens) { (0...10).map { generate:apns_token } }
-          let(:notifications) { tokens.map { |token| build :apns_notification, data: data, tokens: [token] } }
+          let(:notifications) { tokens.map { |token| build :apns_notification, :data => data, :tokens => [token] } }
 
           describe 'success' do
 

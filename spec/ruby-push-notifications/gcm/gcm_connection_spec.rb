@@ -7,11 +7,11 @@ module RubyPushNotifications
 
         let(:body) { 'abc' }
         let(:key)  { 'def' }
-        let(:response) { JSON.dump a: 1 }
+        let(:response) { JSON.dump :a => 1 }
 
         before do
           stub_request(:post, 'https://android.googleapis.com/gcm/send').
-            to_return status: [200, 'OK'], body: response
+            to_return :status => [200, 'OK'], :body => response
         end
 
         it 'runs the right request' do
@@ -19,7 +19,7 @@ module RubyPushNotifications
 
           expect(WebMock).
             to have_requested(:post, 'https://android.googleapis.com/gcm/send').
-              with(body: body, headers: { 'Content-Type' => 'application/json', 'Authorization' => "key=#{key}" }).
+              with(:body => body, :headers => { 'Content-Type' => 'application/json', 'Authorization' => "key=#{key}" }).
                 once
         end
 
